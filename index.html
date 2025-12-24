@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaysia Tax Relief 2024 Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Remove arrows from number inputs */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        .limit-pill {
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+
+    <div class="max-w-5xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+            <div class="flex items-center gap-4">
+                <div class="bg-blue-600 p-4 rounded-2xl shadow-xl shadow-blue-100">
+                    <i class="fas fa-coins text-white text-3xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-black tracking-tight text-slate-800">Tax Relief 2024</h1>
+                    <p class="text-slate-500 font-medium">LHDN Malaysia YA 2024 Calculator</p>
+                </div>
+            </div>
+            <button id="resetBtn" class="flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-red-500 transition-all shadow-sm">
+                <i class="fas fa-undo-alt"></i> Reset All
+            </button>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Column: Input Form -->
+            <div class="lg:col-span-8 space-y-6">
+                
+                <!-- Category 1: General & Lifestyle -->
+                <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center gap-3">
+                        <i class="fas fa-user-circle text-indigo-500 text-xl"></i>
+                        <h2 class="font-black text-slate-700">1. General & Lifestyle</h2>
+                    </div>
+                    <div class="p-6 space-y-5">
+                        <div class="p-4 bg-indigo-50 rounded-2xl flex gap-3 items-start border border-indigo-100">
+                            <i class="fas fa-info-circle text-indigo-500 mt-1"></i>
+                            <p class="text-xs text-indigo-700 leading-relaxed font-medium">
+                                <strong>Individual Relief:</strong> RM 9,000 is automatically applied to your final calculation.
+                            </p>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">Spouse / Alimony</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 4,000</span>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">RM</span>
+                                    <input type="number" data-limit="4000" id="spouse" class="tax-input w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="0">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">Lifestyle Expenses</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 2,500</span>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">RM</span>
+                                    <input type="number" data-limit="2500" id="lifestyle" class="tax-input w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="flex justify-between mb-2">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Sports Equipment & Activities</label>
+                                <span class="limit-pill bg-slate-100 text-slate-500">Max 1,000</span>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">RM</span>
+                                <input type="number" data-limit="1000" id="sports" class="tax-input w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Medical -->
+                <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center gap-3">
+                        <i class="fas fa-hand-holding-medical text-rose-500 text-xl"></i>
+                        <h2 class="font-black text-slate-700">2. Medical Expenses</h2>
+                    </div>
+                    <div class="p-6 space-y-5">
+                        <div class="form-group">
+                            <div class="flex justify-between mb-2">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Serious Disease / Fertility / Dental</label>
+                                <span class="limit-pill bg-slate-100 text-slate-500">Max 10,000</span>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">RM</span>
+                                <input type="number" data-limit="10000" id="medicalMain" class="tax-input w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="0">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">Checkup / Mental Health</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 1,000</span>
+                                </div>
+                                <input type="number" data-limit="1000" id="checkup" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                            </div>
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">Learning Disability (Child)</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 4,000</span>
+                                </div>
+                                <input type="number" data-limit="4000" id="disability" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Insurance & Savings -->
+                <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center gap-3">
+                        <i class="fas fa-shield-alt text-emerald-500 text-xl"></i>
+                        <h2 class="font-black text-slate-700">3. Insurance & Savings</h2>
+                    </div>
+                    <div class="p-6 space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">EPF / KWSP</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 4,000</span>
+                                </div>
+                                <input type="number" data-limit="4000" id="epf" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                            </div>
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">Life Insurance</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 3,000</span>
+                                </div>
+                                <input type="number" data-limit="3000" id="lifeIns" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">PRS / Annuity</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 3,000</span>
+                                </div>
+                                <input type="number" data-limit="3000" id="prs" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                            </div>
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">SOCSO / EIS</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 350</span>
+                                </div>
+                                <input type="number" data-limit="350" id="socso" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="flex justify-between mb-2">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Education & Medical Insurance</label>
+                                <span class="limit-pill bg-slate-100 text-slate-500">Max 3,000</span>
+                            </div>
+                            <input type="number" data-limit="3000" id="medIns" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 4: Family & Others -->
+                <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center gap-3">
+                        <i class="fas fa-baby-carriage text-sky-500 text-xl"></i>
+                        <h2 class="font-black text-slate-700">4. Family, Parents & EV</h2>
+                    </div>
+                    <div class="p-6 space-y-6">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase block mb-2">Child Under 18 (Qty)</label>
+                                <input type="number" id="childU18Qty" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="0">
+                                <p class="text-[10px] text-slate-400 mt-1 font-bold">RM 2,000 EACH</p>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase block mb-2">Child 18+ Edu (Qty)</label>
+                                <input type="number" id="childEduQty" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="0">
+                                <p class="text-[10px] text-slate-400 mt-1 font-bold">RM 8,000 EACH</p>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-5 pt-2">
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">Parents Medical</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 8,000</span>
+                                </div>
+                                <input type="number" data-limit="8000" id="parents" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                            </div>
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">SSPN Savings</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 8,000</span>
+                                </div>
+                                <input type="number" data-limit="8000" id="sspn" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">Self Education</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 7,000</span>
+                                </div>
+                                <input type="number" data-limit="7000" id="edu" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                            </div>
+                            <div class="form-group">
+                                <div class="flex justify-between mb-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase">EV Facility</label>
+                                    <span class="limit-pill bg-slate-100 text-slate-500">Max 2,500</span>
+                                </div>
+                                <input type="number" data-limit="2500" id="ev" class="tax-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none" placeholder="RM 0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Summary Card -->
+            <div class="lg:col-span-4 lg:sticky lg:top-8">
+                <div class="bg-slate-900 rounded-[2.5rem] p-8 text-white shadow-2xl shadow-blue-200 relative overflow-hidden">
+                    <!-- Abstract Decor -->
+                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl"></div>
+                    
+                    <div class="relative z-10">
+                        <p class="text-blue-400 text-xs font-black uppercase tracking-widest mb-2">Total Relief Amount</p>
+                        <div class="text-5xl font-black mb-8 flex items-baseline gap-2">
+                            <span class="text-2xl text-slate-500 tracking-normal">RM</span>
+                            <span id="grandTotal">9,000</span>
+                        </div>
+
+                        <div class="space-y-5 border-t border-slate-800 pt-8">
+                            <div class="flex justify-between items-center group">
+                                <span class="text-slate-400 text-xs font-bold uppercase group-hover:text-blue-400 transition-colors">General & Lifestyle</span>
+                                <span class="font-black text-sm" id="subGeneral">RM 9,000</span>
+                            </div>
+                            <div class="flex justify-between items-center group">
+                                <span class="text-slate-400 text-xs font-bold uppercase group-hover:text-rose-400 transition-colors">Medical Care</span>
+                                <span class="font-black text-sm" id="subMedical">RM 0</span>
+                            </div>
+                            <div class="flex justify-between items-center group">
+                                <span class="text-slate-400 text-xs font-bold uppercase group-hover:text-emerald-400 transition-colors">Insurance & Savings</span>
+                                <span class="font-black text-sm" id="subInsurance">RM 0</span>
+                            </div>
+                            <div class="flex justify-between items-center group">
+                                <span class="text-slate-400 text-xs font-bold uppercase group-hover:text-sky-400 transition-colors">Family & Others</span>
+                                <span class="font-black text-sm" id="subFamily">RM 0</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-10">
+                            <button onclick="window.print()" class="w-full bg-white text-slate-900 py-4 rounded-2xl font-black text-sm uppercase tracking-tighter shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2">
+                                <i class="fas fa-print"></i> Print Summary
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-white border border-slate-200 p-6 rounded-3xl flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center shrink-0">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-black text-slate-700 mb-1">Tax Filing Tip</h4>
+                        <p class="text-[11px] leading-relaxed text-slate-500 font-medium">Keep your original receipts (physical or digital) for <strong>7 years</strong>. LHDN may request them for verification/audits.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const inputs = document.querySelectorAll('.tax-input');
+        const resetBtn = document.getElementById('resetBtn');
+        const grandTotalDisplay = document.getElementById('grandTotal');
+        
+        const subDisplays = {
+            general: document.getElementById('subGeneral'),
+            medical: document.getElementById('subMedical'),
+            insurance: document.getElementById('subInsurance'),
+            family: document.getElementById('subFamily')
+        };
+
+        // Utility: Format Number
+        const fmt = (num) => Math.floor(num).toLocaleString();
+
+        // Utility: Apply Limit
+        const applyLimit = (val, limit) => {
+            if (!limit) return val || 0;
+            return Math.min(val || 0, limit);
+        };
+
+        // Core Calculation
+        const calculateRelief = () => {
+            const data = {};
+            inputs.forEach(input => {
+                const val = parseFloat(input.value) || 0;
+                const limit = parseFloat(input.dataset.limit);
+                
+                // Visual feedback if limit is exceeded
+                if (limit && val > limit) {
+                    input.classList.add('border-amber-300', 'bg-amber-50');
+                } else {
+                    input.classList.remove('border-amber-300', 'bg-amber-50');
+                }
+
+                data[input.id] = applyLimit(val, limit);
+            });
+
+            // Specific Multipliers
+            const childRelief = (parseFloat(document.getElementById('childU18Qty').value) || 0) * 2000;
+            const childEduRelief = (parseFloat(document.getElementById('childEduQty').value) || 0) * 8000;
+
+            // Categories Sum
+            const generalSum = 9000 + data.spouse + data.lifestyle + data.sports;
+            const medicalSum = data.medicalMain + data.checkup + data.disability;
+            const insuranceSum = data.epf + data.lifeIns + data.prs + data.socso + data.medIns;
+            const familySum = childRelief + childEduRelief + data.parents + data.sspn + data.edu + data.ev;
+
+            const total = generalSum + medicalSum + insuranceSum + familySum;
+
+            // Update UI
+            grandTotalDisplay.innerText = fmt(total);
+            subDisplays.general.innerText = `RM ${fmt(generalSum)}`;
+            subDisplays.medical.innerText = `RM ${fmt(medicalSum)}`;
+            subDisplays.insurance.innerText = `RM ${fmt(insuranceSum)}`;
+            subDisplays.family.innerText = `RM ${fmt(familySum)}`;
+        };
+
+        // Events
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateRelief);
+        });
+
+        resetBtn.addEventListener('click', () => {
+            inputs.forEach(input => input.value = '');
+            calculateRelief();
+        });
+
+        // Initialize
+        calculateRelief();
+    </script>
+</body>
+</html>
